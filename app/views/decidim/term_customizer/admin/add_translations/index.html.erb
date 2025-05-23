@@ -21,63 +21,63 @@
       </h2>
     </div>
 
-      <div id="help-panel" class="callout help-text hide" data-toggler=".hide">
-        <p><strong><%= t ".help_title" %></strong></p>
-        <%= t ".help_html", button_name: t(".add") %>
-      </div>
+    <div id="help-panel" class="callout help-text hide" data-toggler=".hide">
+      <p><strong><%= t ".help_title" %></strong></p>
+      <%= t ".help_html", button_name: t(".add") %>
+    </div>
 
-      <div class="filters">
-        <div class="column medium-4">
-          <%= form_tag search_translation_set_add_translations_path, autocomplete: "off", method: :get do %>
-            <div class="filter-search">
-              <%= search_field_tag :term, nil, label: false, id: "tc-autocomplete", class: "autocomplete-input input-group-field", placeholder: t(".search"), data: {
-                autocomplete: {
-                  searchURL: search_translation_set_add_translations_url,
-                  searchPromptText: t("autocomplete.search_prompt", scope: "decidim.admin")
-                }
-              } %>
-            </div>
-          <% end %>
-        </div>
+    <div class="filters">
+      <div class="column medium-4">
+        <%= form_tag search_translation_set_add_translations_path, autocomplete: "off", method: :get do %>
+          <div class="filter-search">
+            <%= search_field_tag :term, nil, label: false, id: "tc-autocomplete", class: "autocomplete-input input-group-field", placeholder: t(".search"), data: {
+              autocomplete: {
+                searchURL: search_translation_set_add_translations_url,
+                searchPromptText: t("autocomplete.search_prompt", scope: "decidim.admin")
+              }
+            } %>
+          </div>
+        <% end %>
       </div>
+    </div>
   </div>
 
   <div class="form__wrapper mt-[230px]">
-    <%= decidim_form_for(@form, url: translation_set_add_translations_path(set), html: { class: "form translations-form add_translations translations_form_admin" }) do |f| %>
+    <%= decidim_form_for(@form, url: translation_set_add_translations_path(set), html: { class: "form form-defaults" }) do |f| %>
       <div id="add-translations-results" class="hide">
         <div id="add-translations">
 
-            <div class="table-scroll">
-              <template>
-                <tr>
-                  <td>{{translation_key}}</td>
-                  <td>{{translation_term}}</td>
-                  <td>
-                    <input type="hidden" name="keys[]" value="{{translation_key}}">
-                    <%= icon_link_to "delete-bin-line", "#", t("actions.destroy", scope: "decidim.admin"), class: "remove-translation-key action-icon--remove" %>
-                  </td>
-                </tr>
-              </template>
+          <div class="table-scroll">
+            <template>
+              <tr>
+                <td>{{translation_key}}</td>
+                <td>{{translation_term}}</td>
+                <td>
+                  <input type="hidden" name="keys[]" value="{{translation_key}}">
+                  <%= icon_link_to "delete-bin-line", "#", t("actions.destroy", scope: "decidim.admin"), class: "remove-translation-key action-icon--remove" %>
+                </td>
+              </tr>
+            </template>
 
-              <table class="table-list">
-                <thead>
-                  <tr>
-                    <th><%= t("models.translations.fields.key", scope: "decidim.term_customizer.admin") %></th>
-                    <th><%= t("models.translations.fields.term", scope: "decidim.term_customizer.admin") %></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
+            <table class="table-list">
+              <thead>
+                <tr>
+                  <th><%= t("models.translations.fields.key", scope: "decidim.term_customizer.admin") %></th>
+                  <th><%= t("models.translations.fields.term", scope: "decidim.term_customizer.admin") %></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="item__edit-sticky">
-      <div class="item__edit-sticky-container">
-        <%= f.submit t(".add") %>
-      </div>
-    </div>
+          <div class="item__edit-sticky-container">
+            <%= f.submit t(".add"), class: "button button__sm button__secondary" %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

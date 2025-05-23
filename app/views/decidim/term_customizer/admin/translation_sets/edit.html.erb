@@ -16,8 +16,9 @@
     </div>
   </h2>
 </div>
+
 <div class="item__edit-form">
-  <%= decidim_form_for(@form, html: { class: "form translation-sets-form edit_translation_set translation_set_form_admin" }) do |f| %>
+  <%= decidim_form_for(@form, html: { class: "form form-defaults translation-sets-form" }) do |f| %>
     <%= render partial: "form", object: f, locals: { title: t(".title") } %>
 
     <div class="item__edit-sticky">
@@ -26,4 +27,4 @@
       </div>
     </div>
   <% end %>
-  </div>
+</div>
