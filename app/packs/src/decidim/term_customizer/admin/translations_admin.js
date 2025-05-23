@@ -34,6 +34,7 @@ $(() => {
       searchPromptText: config.searchPromptText,
       threshold: 3,
       dataMatchKeys: ["label"],
+      maxResults: undefined,
       modifyResult: (item, valueItem) => {
         const sanitizedSearch = currentSearch.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
         const re = new RegExp(`(${sanitizedSearch})`, "gi");
